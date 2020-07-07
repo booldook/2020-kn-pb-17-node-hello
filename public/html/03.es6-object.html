@@ -1,0 +1,163 @@
+<script>
+	/*
+	// ES5 - 객체
+	const A = (function(){
+		function A() {
+
+		}
+		A.prototype.hap = function(a, b){
+			return a + b;
+		}
+		return A;
+	})();
+
+	//console.log(new A());
+
+
+	const Add = (function(){
+		function Add(def) {
+			this.def = def;
+		}
+		Add.prototype.sum = function(a) {
+			return this.def + a;
+		}
+		return Add;
+	})();
+
+	const add10 = new Add(10);
+	const add20 = new Add(20);
+	const add30 = new Add(30);
+
+	//console.log(	add10.sum(50)	);
+	//console.log(	add20.sum(50)	);
+	//console.log(	add30.sum(50)	);
+
+
+	function Person() {
+
+	}
+
+	Person.prototype.hap = function(a, b) {
+		return a + b;
+	}
+
+	//console.log(new Person());
+
+
+
+	const pony = {
+		name: "소나타",
+		color: "white",
+		start: function(){
+			console.log(this.name +"이(가) 시동을 검");
+		},
+		drive: function(){
+			console.log(this.name +"이(가) 주행을 함");
+		},
+		stop: function(){
+			console.log(this.name +"이(가) 멈춤");
+		},
+		parking: function(){
+			console.log(this.name +"이(가) 주차함");
+		},
+	}
+	
+	const Car = (function() {
+		function Car(name, color) {
+			this.name = name;
+			this.color = color;
+		}
+		Car.prototype.start = function(){
+			console.log(this.name +"이(가) 시동을 검");
+		}
+		Car.prototype.drive = function(){
+			console.log(this.name +"이(가) 주행을 함");
+		}
+		Car.prototype.stop = function(){
+			console.log(this.name +"이(가) 멈춤");
+		}
+		Car.prototype.parking = function(){
+			console.log(this.name +"이(가) 주차함");
+		}
+		return Car;
+	})();
+
+	const sonata = new Car("소나타", "흰색");
+	const santafe = new Car("산타페", "검은색");
+
+	sonata.start();
+	santafe.start();
+	console.log(sonata);
+
+
+	//ES6
+
+	class NewCar {
+		constructor(name, color) {
+			this.name = name;
+			this.color = color;
+		}
+		start() {
+			console.log(this.name +"이(가) 시동을 검");
+		}
+		drive() {
+			console.log(this.name +"이(가) 주행을 함");
+		}
+	}
+
+	const newSonata = new NewCar("소나타", "레드");
+	newSonata.start();
+	*/
+
+
+	// 객체생성 1 - ES5
+	function Car(name, color) {
+		this.name = name;
+		this.color = color;
+		this.drive = function() {
+			//console.log("내 차의 이름은 " + this.name + "입니다.");
+		}
+	}
+	Car.prototype.stop = function() {
+		//console.log("내 차의 이름은 " + this.name + "멈춥니다.");
+	}
+
+	//console.log(Car);
+	const car = new Car("sonata", "흰색");
+	const car2 = new Car("santafe", "흰색");
+	car.drive();
+	car.stop();
+	car2.drive();
+
+	// 객체생성 2 - ProtoType - ES5
+	const Car2 = (function(){
+		function Car2(name) {
+			this.name = name
+		}
+		Car2.prototype.drive = function() {
+			//console.log("내 차의 이름은 " + this.name + "입니다.");
+		}
+		return Car2
+	})();
+
+	// 객체생성 3 - class - ES6
+	class Car3 {
+		constructor(name) {
+			this.name = name;
+		}
+		drive() {
+			//console.log("내 차의 이름은 " + this.name + "입니다.");
+		}
+	}
+
+	const sonata = new Car3("소나타");
+	sonata.drive();
+
+	/*
+	const car2 = {
+		name: "sonata",
+		color: "흰색"
+	}
+	console.log(car2);
+	*/
+</script>
