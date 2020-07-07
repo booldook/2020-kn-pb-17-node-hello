@@ -1,0 +1,54 @@
+<script>
+/*
+// 1. 반복문의 종류
+const arr = ['A', 'B', 'C', 'D', 'E', '---------'];
+
+for(let i=0; i<arr.length; i++) console.log(arr[i]);
+for(let i in arr) console.log(arr[i]);
+for(let v of arr) console.log(v);
+arr.forEach(function(v, i){
+	console.log(i + "번째 값:" + v);
+});
+arr.forEach((v, i) => {
+	console.log(i + "번째 값:" + v);
+});
+*/
+
+// 2. Deepcopy
+const arr = ['A', 'B', 'C', 'D', 'E', '---'];
+// const arr2 = arr.slice();
+// const arr2 = [].concat(arr);
+// const arr2 = [];
+// for(let v of arr) arr2.push(v);
+// const arr2 = arr.filter(function(v){ return v; });
+// const arr2 = arr.filter(v => v);
+const arr2 = [...arr]; // Spread Operator 펼침연산자
+
+arr2.push("***");
+//console.log(arr, arr2);
+
+const fruits = ['banana', 'mango', 'melon'];
+const drinks = ['juice', 'milk', 'water'];
+// const foods = fruits.concat(drinks);
+const foods = [...fruits, ...drinks];
+
+console.log(foods);
+// ['banana', 'mango', 'melon', 'juice', 'milk', 'water']
+
+
+const numbers = [1, 2, 3];
+console.log(typeof numbers);
+const sum = (a, b, c) => a + b + c;
+console.log(	sum(...numbers)	);
+
+const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const hap = function() {
+	let sum = 0;
+	console.log(arguments);
+	for(let v of arguments) {
+		sum += v;
+	}
+	return sum;
+}
+console.log(	hap(...nums)	);
+</script>
