@@ -81,5 +81,51 @@ console.log(	argTest3(1, 2)	);
 
 
 // 또다른 iteration
+const car = {
+	name: "소나타",
+	color: "white",
+	drive: function(){
+		console.log(this.name + "이(가) 달립니다.");
+	}
+}
 
+for(var i in car) {
+	console.log(i + " : " + car[i]);
+}
+
+car.drive();
+car['drive']();
+console.log(	car.name	);
+console.log(	car['name']	);
+
+const newCar = Array.from(car); //안된다.
+console.log(newCar);
+
+console.clear();
+
+// 찾기
+let str = 'Hello World';
+
+//문제 str에서 lo 가 포함되어 있는지 검색하시오.
+
+// ES5
+let result = (str.indexOf('lo') > 0) ? true : false;
+console.log(result); // true, false
+
+// ES6
+result = str.includes('lo');
+console.log(result);
+result = str.toLowerCase().startsWith('he');
+console.log(result);
+result = str.endsWith('e');
+console.log(result);
+
+
+// 코딩테스트: iteration & include & filter & Array.from()을 사용하여 주어진 배열에서 문자열 'e'가 포함된 배열을 생성하여 반환하시오.
+
+const fruits = ['apple', 'orange', 'banana', 'mango', 'strawberry'];
+function eSearch() {
+
+}
+console.log(	eSearch(?)	); // ['apple', 'orange', 'strawberry']
 </script>
