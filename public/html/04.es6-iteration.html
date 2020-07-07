@@ -35,7 +35,7 @@ const foods = [...fruits, ...drinks];
 console.log(foods);
 // ['banana', 'mango', 'melon', 'juice', 'milk', 'water']
 
-
+/*
 const numbers = [1, 2, 3];
 console.log(typeof numbers);
 const sum = (a, b, c) => a + b + c;
@@ -51,4 +51,35 @@ const hap = function() {
 	return sum;
 }
 console.log(	hap(...nums)	);
+*/
+
+// iteration요소 != Array
+// arguments
+const argTest = function() {
+	let sum = 0;
+	for(let v of arguments) sum += v;
+	return sum;
+}
+console.log(	argTest(1, 2, 3, 4, 5)	);
+
+// 화살표함수에서 사용못하게 된 arguments 사용법
+const argTest2 = (...args) => {
+	let sum = 0;
+	for(let v of args) sum += v;
+	return sum;
+}
+console.log(	argTest2(1, 2, 3, 4, 5)	);
+
+
+// 배열이 아닌 iteration 요소를 배열로 바꾸기
+const argTest3 = function(){
+	const args = Array.from(arguments);
+	args.push(3);
+	return args[0] + args[1] + args[2];
+}
+console.log(	argTest3(1, 2)	);
+
+
+// 또다른 iteration
+
 </script>
