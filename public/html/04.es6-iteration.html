@@ -121,11 +121,20 @@ result = str.endsWith('e');
 console.log(result);
 
 
-// 코딩테스트: iteration & include & filter & Array.from()을 사용하여 주어진 배열에서 문자열 'e'가 포함된 배열을 생성하여 반환하시오.
+// 코딩테스트: includes() & filter() & Array.from()을 사용하여 주어진 배열에서 문자열 'e'가 포함된 배열을 생성하여 반환하시오.
 
-const fruits = ['apple', 'orange', 'banana', 'mango', 'strawberry'];
+const fruits2 = ['apple', 'orange', 'banana', 'mango', 'strawberry'];
 function eSearch() {
-
+	const args = Array.from(arguments);
+	return args.filter(function(v) {
+		return v.includes('e')
+	});
 }
-console.log(	eSearch(?)	); // ['apple', 'orange', 'strawberry']
+const eSearch2 = (...args) => args.filter(v => v.includes('e'));
+
+console.log(	eSearch(...fruits2)	); // ['apple', 'orange', 'strawberry']
+console.log(	eSearch2(...fruits2)	); // ['apple', 'orange', 'strawberry']
+
+//console.log(...fruits2);
+//console.log('apple', 'orange', 'banana', 'mango', 'strawberry');
 </script>
