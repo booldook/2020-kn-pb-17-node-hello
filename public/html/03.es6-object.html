@@ -160,4 +160,22 @@
 	}
 	console.log(car2);
 	*/
+
+	function Test() {
+		this.name = "test";
+		this.start = function(){
+			window.setTimeout(function(){
+				console.log(this);
+			}, 1000);
+		}
+		this.start2 = () => {
+			window.setTimeout(() => {
+				console.log(this);
+			}, 1000);
+		}
+	}
+
+	const test = new Test();
+	test.start();
+	test.start2();
 </script>
