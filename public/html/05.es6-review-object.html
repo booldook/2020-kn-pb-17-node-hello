@@ -105,7 +105,99 @@ const thisSample = {
 	},
 }
 
-thisSample.fn1();
-thisSample.fn2();
-thisSample.fn3();
+//thisSample.fn1();
+//thisSample.fn2();
+//thisSample.fn3();
+
+// console.clear();
+/*
+window.a = 10;
+var b = 10;
+
+function testFn() {
+	console.log(this);
+}
+const test = new testFn();
+test.a = "A";
+
+console.log(testFn);
+console.log(test);
+*/
+
+// Literal 객체 - 변수만을 가지는 애
+const literal = {
+	a: 1,
+	b: "A",
+	fn: function(){
+
+	}
+}
+console.log(literal.a);
+
+const InstanceFn = function() {
+	this.a = 1;
+	this.b = "A";
+	this.fn = function() {
+
+	}
+}
+InstanceFn();
+const instanceFn = new InstanceFn();
+console.log(instanceFn.a);
+
+/*
+const Slide = function(container){
+	this.container = container;
+	this.container.find(".bt-prev").click(this.onPrev);
+	this.container.find(".bt-next").click(this.onPrev);
+}
+Slide.prototype.onPrev = function() {
+
+}
+Slide.prototype.onNext = function() {
+
+}
+
+new Slide(	$("main-wrap")	)
+new Slide(	$("prd-wrap")	)
+new Slide(	$("comment-wrap")	)
+*/
+
+const li2 = {
+	a: 10,
+	b: 20,
+	fn: function() {
+		return this.a + this.b;
+	},
+	fn2: function() {
+		// this -> li2
+		setTimeout(function(){
+			console.log("fn2의 setTimeout안: ", this);	// this -> window
+		}, 0);
+	},
+	fn3: function() {
+		// this -> li2
+		var that = this;
+		setTimeout(function(){
+			console.log("fn2의 setTimeout안: ", that);	// that -> li2
+		}, 0);
+	},
+	fn4: function() {
+		// this -> li2
+		setTimeout(function(){
+			console.log("fn2의 setTimeout안: ", this);	// this -> li2
+		}.bind(this), 0);
+	},
+	fn5: function() {
+		// this -> li2
+		setTimeout(() => {
+			console.log("fn2의 setTimeout안: ", this);	// this -> li2
+		}, 0);
+	},
+}
+
+li2.fn2();
+li2.fn3();
+li2.fn4();
+li2.fn5();
 </script>
