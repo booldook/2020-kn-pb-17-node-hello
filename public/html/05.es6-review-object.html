@@ -1,0 +1,111 @@
+<script>
+/* Object, Iteration 복습 */
+
+// 1. Literal Object
+// ES5
+const obj = {
+	firstName: "길동",
+	lastName: "홍",
+	fullName: function() {
+		return this.lastName + " " + this.firstName;
+	}
+}
+
+// ES6 - 1
+const obj2 = {
+	firstName: "길동",
+	lastName: "홍",
+	fullName: () => this.lastName + " " + this.firstName
+}
+
+// ES6 - 2
+const obj3 = {
+	firstName: "길동",
+	lastName: "홍",
+	fullName() {
+		return this.lastName + " " + this.firstName;
+	}
+}
+
+// 돌발퀴즈 - 위의 리터럴객체를 ES5(Hong5), ES6(Hong6) 객체로 각각 만드시오.
+const Hong5 = function(fName, lName) {
+	this.firstName = fName;
+	this.lastName = lName;
+}
+Hong5.prototype.fullName = function() {
+	return this.lastName + " " + this.firstName;
+}
+const hong5 = new Hong5("길동", "홍");
+console.log(	hong5.fullName()	);
+
+const Hong55 = (function(){
+	function Hong55(fName, lName) {
+		this.firstName = fName;
+		this.lastName = lName;
+	}
+	Hong55.prototype.fullName = function() {
+		return this.lastName + " " + this.firstName;
+	}
+	return Hong55;
+})();
+const hong55 = new Hong55("길순", "홍");
+console.log(	hong55.fullName()	);
+
+class Hong6 {
+	constructor(fName, lName) {
+		this.firstName = fName;
+		this.lastName = lName;
+	}
+	fullName() {
+		return this.lastName + " " + this.firstName;
+	}
+} 
+const hong6 = new Hong6("길만", "홍");
+console.log(	hong6.fullName()	);
+
+// ES6 에서 Literal Object를 Object(인스턴스 객체를 생성할 수 있는 객체)로 만드는 메서드가 생겼음
+const Hong7 = {
+	firstName: "길동",
+	lastName: "홍",
+	fullName() {
+		return this.lastName + " " + this.firstName;
+	}
+}
+
+const hong7 = Object.create(Hong7);
+hong7.firstName = "길룡";
+hong7.lastName = "홍";
+console.log(	hong7.fullName()	);
+
+const hong8 = Object.assign({}, Hong7, {
+	firstName: "길성",
+	lastName: "홍"
+});
+console.log(	hong8.fullName() );
+
+
+// this를 알아보자
+const thisSample = {
+	fn1() {
+		const that = this;
+		setTimeout(function(){
+			console.log(this);
+			console.log(that);
+		}, 1000);
+	},
+	fn2() {
+		setTimeout(function(){
+			console.log(this);
+		}.bind(this), 1000);
+	},
+	fn3() {
+		setTimeout(() => {
+			console.log(this);
+		}, 1000);
+	},
+}
+
+thisSample.fn1();
+thisSample.fn2();
+thisSample.fn3();
+</script>
