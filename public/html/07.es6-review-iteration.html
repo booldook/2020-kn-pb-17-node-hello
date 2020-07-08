@@ -1,0 +1,122 @@
+<script>
+Array.prototype.sum = function(){
+	let val = 0;
+	for(let v of this) val += v;
+	return val;
+}
+const arr = [1, 2, 3];
+
+console.log(arr.sum());
+// arr.a = 'NN';
+
+
+for(let i=0; i<arr.length; i++) {
+	console.log(arr[i]);
+}
+
+for(let i in arr) {
+	console.log(arr[i]);
+}
+
+// ES6
+for(let v of arr) {
+	console.log(v);
+}
+console.clear();
+
+// Callback을 가지는 반복메서드
+const arr2 = ['A', 'B', 'C'];
+
+arr2.forEach(function(v, i){
+	console.log(v);
+});
+console.log('--------');
+
+// map(), filter(), every();
+const users = [
+	{id: 1, name: "홍길동", age: 48, score: 85},
+	{id: 2, name: "홍길만", age: 42, score: 55},
+	{id: 3, name: "홍길이", age: 28, score: 65},
+	{id: 4, name: "홍길룡", age: 18, score: 78},
+	{id: 5, name: "홍길순", age: 21, score: 80},
+	{id: 6, name: "홍길희", age: 38, score: 92},
+	{id: 7, name: "홍길영", age: 32, score: 98},
+	{id: 8, name: "홍길숙", age: 55, score: 72},
+];
+
+// 문제1: result변수에 나이가 30세 이상인 회원을 넣으세요.
+let result = users.filter(v => v.age >= 30);
+console.log(result);
+
+// 문제2: result2변수에 점수가 80점 이상인 회원을 넣으세요.
+let result2 = users.filter(v => v.score >= 80);
+console.log(result2);
+
+// 문제3: result3변수에 age와 score를 더해서 나온 결과를 hap이라는 변수를 생성해서 넣으세요.
+let result3 = users.map((v) => {
+	v.hap = v.age + v.score;
+	return v;
+});
+console.log(result3);
+
+// 문제4: users 모두의 score가 60 점 이상이면 result4 에 true, 아니면 false
+let result4 = users.every(v => v.score >= 60);
+console.log(result4);
+
+/********** spread operator **********/
+const arr11 = ['A', 'B', 'C'];
+const arr22 = [...arr11, 'D', 'E'];
+console.log(arr22);
+const arr33 = ['F', ...arr11, 'H', ...arr22];
+console.log(arr33);
+
+
+/********** arguments(ES5) **********/
+function sum() {
+	let sum = 0;
+	for(let v of arguments) sum += v;  // sum = sum + v;
+	return sum;
+}
+
+const sum2 = function() {
+	let sum = 0;
+	for(let v of arguments) sum += v;  // sum = sum + v;
+	return sum;
+}
+
+console.log(	sum(1, 2, 3, 4, 5)	);
+console.log(	sum2(1, 2, 3, 4, 5)	);
+
+const sum3 = (...args) => {
+	let sum = 0;
+	for(let v of args) sum += v;  // sum = sum + v;
+	return sum;
+}
+
+console.log(	sum3(1, 2, 3, 4, 5)	);
+
+
+/************ 구조분해할당(비구조화 할당), destructuring ***********/
+const utils = {
+	getDate() {
+		const d = new Date();
+		return d.getDate();
+	},
+	getWeek() {
+		const d = new Date();
+		return d.getDay(); // 0:Sunday ...
+	},
+	getMonth() {
+		const d = new Date();
+		return d.getMonth() + 1;
+	},
+	zp(n) {
+		return n<10 ? '0'+n : n;
+	}
+}
+
+console.log(utils.zp(9));
+
+const { getDay, zp } = utils;
+console.log(zp(8));
+</script>

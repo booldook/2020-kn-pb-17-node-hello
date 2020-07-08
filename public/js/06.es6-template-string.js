@@ -29,12 +29,25 @@ xhttp.onreadystatechange = function() {
 	}
 }
 xhttp.open('GET', url, true);
-xhttp.send();
+// xhttp.send();
 
 /*********** jQuery Ajax ************/
 // $.get()
 // $.post()
 // $.ajax()
 $.get(url, function(res) {
-	console.log(res);
+	let { stores } = res;
+	var html = '';
+	for(let v of stores) {
+		var { name, addr, code, remain_stat } = v;
+		html += `
+			<tr>
+				<td>${code}</td>
+				<td>${name}</td>
+				<td class="text-left">${addr}</td>
+				<td>${remain_stat}</td>
+			</tr>
+		`;
+	}
+	$(".mask-table tbody").html(html);
 });
