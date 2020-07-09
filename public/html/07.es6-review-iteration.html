@@ -93,6 +93,7 @@ const sum3 = (...args) => {
 	return sum;
 }
 
+
 console.log(	sum3(1, 2, 3, 4, 5)	);
 
 
@@ -119,4 +120,57 @@ console.log(utils.zp(9));
 
 const { getDay, zp } = utils;
 console.log(zp(8));
+
+
+const data = {
+	coord: {lon: 38.5, lat: 127.8},
+	weather: [
+		{id: 300, main: "Sunny", description: "Sunny", city: "Seoul"},
+		{id: 301, main: "Drizzle", description: "Drizzle", city: "Pusan"},
+		{id: 302, main: "Rain", description: "Heavy Rain", city: "Jeju"},
+		{id: 303, main: "Sunny", description: "Sunny", city: "Daejeon"},
+	]
+}
+
+const {lat} = data.coord;
+const [seoulWeather, , jeju] = data.weather;
+console.log(jeju.main);
+
+
+
+/*********** 객체의 반복 *************/
+console.clear();
+
+const obj1 = {
+	a: 'Something',
+	b: 55,
+	c: false,
+	d: () => {},
+	e: [1, 2, 3],
+	f: {a: "A", b: "B"}
+}
+
+for(var i=0; i<obj1.length; i++) {
+	console.log(i);
+}
+for(var i in obj1) {
+	console.log(i);
+}
+/* for(var v of obj1) {
+	console.log(v);
+} */
+
+
+// ES6의 객체 반복
+console.log(	Object.keys(obj1)	);
+console.log(	Object.values(obj1)	);
+console.log(	Object.entries(obj1)	);
+
+var res = Object.entries(obj1);
+console.log(res[2][0]);
+
+
+for(let [k, v] of Object.entries(obj1)) {
+	console.log(k, v);	
+}
 </script>
