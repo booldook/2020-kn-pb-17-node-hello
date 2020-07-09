@@ -166,11 +166,58 @@ console.log(	Object.keys(obj1)	);
 console.log(	Object.values(obj1)	);
 console.log(	Object.entries(obj1)	);
 
-var res = Object.entries(obj1);
-console.log(res[2][0]);
-
-
 for(let [k, v] of Object.entries(obj1)) {
 	console.log(k, v);	
 }
+
+// ES6의 새로운 객체 - Set, WeakSet, Map, WeakMap
+// Array 개선 -> Set, WeakSet
+// Object Literal 개선 -> Map, WeakMap
+// Set특징 - 중복을 제어한다.
+// Weak.. 특징 - 참조형 객체만 저장한다.(array, fn, obj)
+console.clear();
+const set1 = new Set();
+set1.add('A');
+set1.add('B');
+set1.add('C');
+set1.add('A');
+console.log(set1);
+console.log(set1.size); // Array.length
+
+// 문제1. 다음의 배열에서 값을 찾으시오.
+const arr1 = ['A', 'B', 'C', 'D', 'E']; // C가 배열에 존재하면 find true 아니면 false
+console.log(	arr1.indexOf('c')	);
+let find = arr1.indexOf('C') > -1 ? true : false;
+console.log(find);
+
+// Set에서 데이터 찾기
+find = set1.has('C');
+console.log(find);
+
+// Set에서 데이터 지우기
+set1.delete('C');
+find = set1.has('C');
+console.log(find);
+
+// Set Iterate
+set1.forEach((v, i) => {
+	console.log(v, i);
+});
+
+
+
+// 예제: 로또를 만들어보자
+const config = { count: 6, numbers: 45 }
+let {	count, numbers } = config;
+
+const getLotto = (count, numbers) => {
+	const lottoSet = new Set();
+	while(lottoSet.size < count) {
+		lottoSet.add( getNumber(numbers) );
+	}
+	return lottoSet;
+}
+const getNumber = number => Math.floor(Math.random() * number + 1); 
+
+console.log( getLotto(count, numbers) );
 </script>
