@@ -204,12 +204,8 @@ set1.forEach((v, i) => {
 	console.log(v, i);
 });
 
-
-
 // 예제: 로또를 만들어보자
 const config = { count: 6, numbers: 45 }
-let {	count, numbers } = config;
-
 const getLotto = (count, numbers) => {
 	const lottoSet = new Set();
 	while(lottoSet.size < count) {
@@ -219,5 +215,37 @@ const getLotto = (count, numbers) => {
 }
 const getNumber = number => Math.floor(Math.random() * number + 1); 
 
+const {	count, numbers } = config;
 console.log( getLotto(count, numbers) );
+
+
+// WeakSet - Gabage Collection을 방지한다.
+let ws1 = new WeakSet();
+ws1.add({a: "A"});
+ws1.add(v => v*2);
+ws1.add([1, 2, 3]);
+console.log(ws1);
+
+
+// Map();
+console.clear();
+const map1 = new Map();
+map1.set('a', 'A');
+map1.set('b', 'B');
+map1.set('c', 'C');
+map1.set('a', 'A');
+map1.set('arr', [1, 2, 3, 4]);
+map1.set('fn', v => v * 2);
+console.log(map1.get('C'));
+console.log(map1.has('arr'));
+map1.forEach((value, key) => {
+	console.log(key, value);
+});
+
+// console.log(map1.entries());
+for(let [k, v] of Object.entries(obj1)) {
+
+}
+
+[1, 2, 3, 4].forEach(v => {console.log(v * 2)});
 </script>
