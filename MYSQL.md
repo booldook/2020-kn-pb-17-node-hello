@@ -73,3 +73,13 @@ SELECT * FROM users ORDER BY id ASC;
 SELECT * FROM users ORDER BY id DESC;
 SELECT * FROM users WHERE userid like 'b%' ORDER BY id DESC;
 ```
+
+3. Update
+```sql
+UPDATE users SET username='홍길만', userpw='111111' WHERE id=5;
+```
+
+4. Delete
+```sql
+DELETE FROM users WHERE id=4;
+```
